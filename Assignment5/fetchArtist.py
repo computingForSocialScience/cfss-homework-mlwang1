@@ -6,12 +6,23 @@ def fetchArtistId(name):
     """Using the Spotify API search method, take a string that is the artist's name, 
     and return a Spotify artist ID.
     """
-    pass
+    url = 'https://api.spotify.com/v1/search?q='+str(name)+'&type=artist'
+    req = requests.get(url)
+    src = req.json()
+    return src['artists']['items'][0]['id']
 
 def fetchArtistInfo(artist_id):
     """Using the Spotify API, takes a string representing the id and
 `   returns a dictionary including the keys 'followers', 'genres', 
     'id', 'name', and 'popularity'.
     """
-    pass
-
+    url = 'https://api.spotify.com/v1/artists/'+artist_id
+    req = requests.get(url)
+    src = req.json()
+    dictionary = {}
+    dictionary['followers'] = src['followers']['total']
+    dictionary['genres'] = src['genres']
+    dictionary['id'] = artist_id
+    dictionary['name'] = src['name']
+    dictionary['popularity'] = src['popularity']
+    return dictionary
