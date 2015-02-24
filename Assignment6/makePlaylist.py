@@ -38,6 +38,5 @@ if __name__ == "__main__":
 		data.append((name, alb_name, song))
 		if len(data) == 30:
 			break
-	print data
 	pd.DataFrame(data).to_csv('playlist.csv', index=False, encoding='utf-8')
 			
