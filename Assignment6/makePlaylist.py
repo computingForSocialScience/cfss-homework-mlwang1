@@ -26,7 +26,7 @@ if __name__ == "__main__":
 		art_list.append(r)
 	data = []
 	for a in art_list:
-		name = fetchAlbumInfo(a)['name']
+		name = fetchAlbumInfo(a)['name'] #correct id but url not working
 		if name == 0:
 			continue
 		album = random.choice(fetchAlbumIds(r))
