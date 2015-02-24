@@ -7,6 +7,7 @@ def fetchAlbumIds(artist_id):
     returns a list of album IDs in a list
     """
     url = 'https://api.spotify.com/v1/artists/'+artist_id+'/albums?market=US&album_type=album'
+    req = requests.get(url)
     src = req.json()
     ids = []
     for i in src['items']:
@@ -18,7 +19,6 @@ def fetchAlbumInfo(album_id):
     and return a dictionary with keys 'artist_id', 'album_id' 'name', 'year', popularity'
     """
     url = 'https://api.spotify.com/v1/albums/'+album_id
-    print url
     req = requests.get(url)
     src = req.json()
     if src.has_key('error'):
