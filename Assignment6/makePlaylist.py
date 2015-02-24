@@ -29,7 +29,7 @@ if __name__ == "__main__":
 		name = fetchArtistInfo(a)['name'] #correct id but url not working
 		if name == 0:
 			continue
-		album = random.choice(fetchAlbumIds(r))
+		album = random.choice(fetchAlbumIds(a))
 		url = 'http://api.spotify.com/v1/albums/'+album+'/tracks'
 		req = requests.get(url)
 		src = req.json()
@@ -38,5 +38,6 @@ if __name__ == "__main__":
 		data.append((name, alb_name, song))
 		if len(data) == 30:
 			break
+	print data
 	pd.DataFrame(data).to_csv('playlist.csv', index=False, encoding='utf-8')
 			
